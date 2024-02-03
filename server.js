@@ -32,7 +32,6 @@ const UserModel = mongoose.model('User', userSchema);
 
 app.post('/register', async (req, res) => {
   try {
-    debugger;
     const newUser = new UserModel(req.body);
     const result = await newUser.save();
     console.log('Data saved successfully:', result);

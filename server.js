@@ -51,7 +51,7 @@ const loanSchema = new mongoose.Schema({
   email: String,
   number: Number,
   city: String,
-  loanAmount: Number,
+  loanAmount: String,
 });
 
 const LoanModel = mongoose.model('Loan', loanSchema);

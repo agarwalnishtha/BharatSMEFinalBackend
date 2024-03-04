@@ -26,8 +26,8 @@ const userSchema = new mongoose.Schema({
   organization: String,
   email: String,
   number: Number,
-  requirements: String,
-  purpose: String,
+  businessType: String,
+  city: String,
 });
 
 const UserModel = mongoose.model('User', userSchema);
@@ -36,6 +36,52 @@ app.post('/register', async (req, res) => {
   try {
     const newUser = new UserModel(req.body);
     const result = await newUser.save();
+    console.log('Data saved successfully:', result);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ success: false, error: 'Error registering user' });
+  }
+});
+
+const loanSchema = new mongoose.Schema({
+  name: String,
+  organization: String,
+  gstNumber: String,
+  email: String,
+  number: Number,
+  city: String,
+  loanAmount: Number,
+});
+
+const LoanModel = mongoose.model('Loan', loanSchema);
+
+app.post('/loan', async (req, res) => {
+  try {
+    const newLoan = new LoanModel(req.body);
+    const result = await newLoan.save();
+    console.log('Data saved successfully:', result);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ success: false, error: 'Error registering user' });
+  }
+});
+
+const partnershipSchema = new mongoose.Schema({
+  name: String,
+  organization: String,
+  email: String,
+  number: Number,
+  description: String,
+});
+
+const PartnershipModel = mongoose.model('Partnership', partnershipSchema);
+
+app.post('/partnership', async (req, res) => {
+  try {
+    const newPartnership = new PartnershipModel(req.body);
+    const result = await newPartnership.save();
     console.log('Data saved successfully:', result);
     res.json({ success: true, data: result });
   } catch (error) {

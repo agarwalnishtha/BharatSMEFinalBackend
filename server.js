@@ -74,6 +74,7 @@ const partnershipSchema = new mongoose.Schema({
   email: String,
   number: Number,
   description: String,
+  partnershipType: String,
 });
 
 const PartnershipModel = mongoose.model('Partnership', partnershipSchema);

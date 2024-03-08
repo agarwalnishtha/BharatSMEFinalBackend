@@ -91,6 +91,11 @@ app.post('/partnership', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  // Forward the request to the corresponding URL on your Heroku app
+  res.redirect('https://bharat-sme-frontend-2e30a20b9795.herokuapp.com/');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

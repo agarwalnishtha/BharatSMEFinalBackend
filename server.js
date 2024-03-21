@@ -69,18 +69,16 @@ app.post('/loan', async (req, res) => {
   }
 });
 
-const loanSchema = new mongoose.Schema({
+const personalLoanSchema = new mongoose.Schema({
   name: String,
-  organization: String,
-  gstNumber: String,
   email: String,
   number: Number,
   city: String,
   loanAmount: String,
-  businessPeriod: String,
+  employmentType: String,
 });
 
-const PersonalLoanModel = mongoose.model('PersonalLoan', loanSchema);
+const PersonalLoanModel = mongoose.model('PersonalLoan', personalLoanSchema);
 
 app.post('/ploan', async (req, res) => {
   try {

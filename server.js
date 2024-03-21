@@ -69,6 +69,31 @@ app.post('/loan', async (req, res) => {
   }
 });
 
+const loanSchema = new mongoose.Schema({
+  name: String,
+  organization: String,
+  gstNumber: String,
+  email: String,
+  number: Number,
+  city: String,
+  loanAmount: String,
+  businessPeriod: String,
+});
+
+const PersonalLoanModel = mongoose.model('PersonalLoan', loanSchema);
+
+app.post('/ploan', async (req, res) => {
+  try {
+    const newPersonalLoan = new PersonalLoanModel(req.body);
+    const result = await newPersonalLoan.save();
+    console.log('Data saved successfully:', result);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ success: false, error: 'Error registering user' });
+  }
+});
+
 const partnershipSchema = new mongoose.Schema({
   name: String,
   organization: String,

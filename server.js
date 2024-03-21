@@ -73,7 +73,7 @@ const personalLoanSchema = new mongoose.Schema({
   name: String,
   email: String,
   number: Number,
-  city: String,
+  // city: String,
   loanAmount: String,
   employmentType: String,
 });
